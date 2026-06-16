@@ -1,0 +1,53 @@
+CREATE DATABASE cafeteria;
+USE cafeteria;
+
+CREATE TABLE Produtos (
+	produto_id INT primary key auto_increment,
+    nome VARCHAR(100) NOT NULL,
+    categoria VARCHAR(100),
+    preco DECIMAL(65,2)
+	);
+    
+    CREATE TABLE Cliente (
+    cliente_id INT primary key auto_increment,
+    nome VARCHAR(100),
+    email VARCHAR(100),
+    data_cadastro DATE);
+    
+    CREATE TABLE Vendas (
+    venda_id INT primary key auto_increment,
+    produto_id INT NOT NULL,
+    cliente_id INT,
+    quantidade INT,
+    data_venda DATE NOT NULL,
+    foreign key (produto_id) references Produtos(produto_id),
+    foreign key (cliente_id) references Cliente(cliente_id)
+    );
+    
+    insert into Produtos (produto_id, nome, categoria, preco) values
+    (1, 'Pão de queijo', 'Salgado', 10.0),
+    (2, 'Cappuccino', 'Bebida', 12.0),
+    (3, 'Misto quente', 'Salgado', 10.0),
+    (4, 'Coxinha', 'Salgado', 8.0),
+    (5, 'Chá Gelado', 'Bebida', 7.0);
+    
+    insert into Cliente (cliente_id, nome, email, data_cadastro) values
+    (1, 'Manuela Lima', 'manuela@email.com', 2026-11-11),
+    (2, 'Beatriz Lima', 'beatriz@email.com', 2026-10-08),
+    (3, 'Geovana Higina', 'geovana@email.com', 2026-07-02),
+    (4, 'Lara de Luca', 'lara@email.com', 2025-08-01),
+    (5, 'Ana Rauany', 'ana@email.com', 2025-09-01);
+    
+    insert into Vendas (venda_id, produto_id, cliente_id, quantidade, data_venda) values
+    (1,1,1,2, '2026-09-09'),
+    (2,3,2,4, '2025-11-21'),
+    (3,3,4,5, '2025-11-21'),
+    (4,5,3,2, '2025-11-23'),
+    (5,5,2,5, '2025-11-23'),
+    (6,4,3,5, '2025-11-23'),
+    (7,2,2,5, '2025-11-23');
+    
+    
+    
+    
+       
